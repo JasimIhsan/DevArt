@@ -28,6 +28,10 @@ npm run dev                  # http://localhost:5173
 2. **Google sign-in.** In Google Cloud Console, create an OAuth client (type *Web application*) and add `https://cjqqnlwxmvyszyxuhmko.supabase.co/auth/v1/callback` as an authorised redirect URI. In Supabase, go to Authentication > Sign In / Providers > Google, enable it, and paste the client ID and secret.
 3. **Redirect URLs.** In Authentication > URL Configuration, set the Site URL to your Vercel domain and add it, plus `http://localhost:5173`, to the redirect allow list. Add preview domains (for example `https://*-<team>.vercel.app`) if you want sign-in on previews.
 
+## Connect Claude (MCP)
+
+Claude Code can list, read, draw and edit your diagrams through DevArt's MCP server, a Supabase Edge Function. Create a token from the avatar menu > **Connect to Claude**. See [docs/mcp.md](docs/mcp.md) for the connection guide and deploy steps.
+
 ## Deploy to Vercel
 
 Import the repository in Vercel. `vercel.json` sets the Vite build, the output folder, and the fallback that makes `/f/<id>` links work. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` under Project Settings > Environment Variables, then deploy. There are no functions or servers.
@@ -109,7 +113,7 @@ Pick one under **Start from a template** on the home page. They are defined in `
 
 DevArt was simplified to focus on architecture diagrams. These are gone from the app: Draw with AI, documents, freehand drawing and shape tools, sticky notes, images, device frames, code blocks, comments, version history, presentation mode, share links, embeds, the old templates gallery, style presets, custom icons, folders, the trash view, workspaces, API tokens, settings, audit logs, and importing from draw.io and Visio.
 
-Also gone with the move to Supabase: the local server, the REST API, the MCP server for Claude Code, live multi-window sync, and offline editing. See [Roadmap](#roadmap).
+Also gone with the move to Supabase: the local server, the REST API, live multi-window sync, and offline editing. See [Roadmap](#roadmap).
 
 **Your existing work is safe.** Older files stay in the list and open in the editor:
 
@@ -122,7 +126,6 @@ Also gone with the move to Supabase: the local server, the REST API, the MCP ser
 
 - Teams and sharing: add a `team_id` to `files` and policies through team membership.
 - Live multi-user editing: a Supabase Realtime channel carrying Yjs updates (the editor already uses a Yjs document in memory).
-- Claude Code integration: the old MCP server drew diagrams over a local REST API. It can return as a Supabase Edge Function.
 - Offline editing with a local copy that syncs on reconnect.
 
 ## Known limitations

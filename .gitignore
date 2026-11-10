@@ -8,3 +8,4 @@ data
 .vercel
 supabase/.temp
 supabase/.branches
+dist-mcp

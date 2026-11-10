@@ -11,13 +11,16 @@
     "test": "node --test --test-force-exit tests/*.test.ts",
     "typecheck": "tsc --noEmit",
     "icons": "node tools/make-icons.ts",
+    "mcp:bundle": "node tools/bundle-mcp.ts",
     "import:local": "node --env-file=.env.local tools/import-local-data.ts"
   },
   "engines": {
     "node": ">=24"
   },
   "dependencies": {
+    "@base-ui/react": "^1.9.0",
     "@dagrejs/dagre": "^1.1.8",
+    "@fontsource-variable/geist": "^5.3.0",
     "@supabase/supabase-js": "^2.58.0",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.5.2",
@@ -36,6 +39,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.2.0",
+    "esbuild": "^0.28.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-router-dom": "^7.18.5",

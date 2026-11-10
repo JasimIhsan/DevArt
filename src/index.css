@@ -13,6 +13,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "./styles.css" layer(app);
+@import "@fontsource-variable/geist";
 
 @custom-variant dark (&:is([data-theme='dark'], [data-theme='dark'] *));
 
@@ -43,10 +44,19 @@
   --radius-xl: calc(var(--radius) * 1.4);
   --radius-2xl: calc(var(--radius) * 1.8);
 
-  --font-sans: Inter, 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  --font-sans: 'Geist Variable', sans-serif;
   --font-mono: 'JetBrains Mono', Consolas, Menlo, monospace;
+  --font-heading: var(--font-sans);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 @layer base {
   * { @apply border-border outline-ring/50; }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
 }

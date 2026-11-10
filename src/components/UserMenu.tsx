@@ -1,10 +1,12 @@
 // The avatar in the top bar. It opens a small menu with the account's name and email, and Sign out.
 import { useEffect, useRef, useState } from 'react';
 import { profileOf, signOut, useSession } from '../lib/auth.ts';
+import { ConnectDialog } from './ConnectDialog.tsx';
 
 export function UserMenu() {
   const session = useSession();
   const [open, setOpen] = useState(false);
+  const [connect, setConnect] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!open) return;
@@ -33,9 +35,11 @@ export function UserMenu() {
             </div>
           </div>
           <div className="menu-sep" />
+          <button role="menuitem" onClick={() => { setOpen(false); setConnect(true); }}>Connect to Claude</button>
           <button role="menuitem" onClick={() => { setOpen(false); void signOut(); }}>Sign out</button>
         </div>
       )}
+      {connect && <ConnectDialog onClose={() => setConnect(false)} />}
     </div>
   );
 }
