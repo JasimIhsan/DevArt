@@ -8,7 +8,6 @@ import { EditorPage } from "./pages/Editor.tsx";
 import { HomePage } from "./pages/Home.tsx";
 import { LoginPage } from "./pages/Login.tsx";
 import { NotFoundPage } from "./pages/NotFound.tsx";
-import { PwaStatus } from "./pwa.tsx";
 
 function SetupNeeded() {
    return (
@@ -43,7 +42,6 @@ export function App() {
                   <Route path="*" element={<NotFoundPage />} />
                </Routes>
             )}
-            <PwaStatus />
             <Toaster />
             <ConfirmHost />
          </BrowserRouter>

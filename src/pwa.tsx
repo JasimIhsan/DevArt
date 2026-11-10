@@ -1,4 +1,4 @@
-import { useEffect, useState, useSyncExternalStore } from 'react';
+import { useSyncExternalStore } from 'react';
 import { Icon } from './components/ui.tsx';
 
 type InstallEvent = Event & { prompt: () => Promise<void>; userChoice: Promise<{ outcome: string }> };
@@ -45,27 +45,12 @@ export function InstallButton() {
   );
 }
 
-/** Tells the user when a new version of the app is ready. */
-export function PwaStatus() {
-  const update = useSyncExternalStore(subscribe, () => waitingWorker !== null);
-  const [applying, setApplying] = useState(false);
+/** True when a new version of the app has been downloaded and is waiting to take over. */
+export const useUpdateReady = () => useSyncExternalStore(subscribe, () => waitingWorker !== null);
 
-  useEffect(() => {
-    if (!applying || !('serviceWorker' in navigator)) return;
-    const reload = () => location.reload();
-    navigator.serviceWorker.addEventListener('controllerchange', reload);
-    return () => navigator.serviceWorker.removeEventListener('controllerchange', reload);
-  }, [applying]);
-
-  if (!update) return null;
-  return (
-    <div className="pwa-status" role="status">
-      {update && (
-        <>
-          <span>A new version of DevArt is ready.</span>
-          <button onClick={() => { setApplying(true); waitingWorker?.postMessage('skip-waiting'); }}>Update</button>
-        </>
-      )}
-    </div>
-  );
+/** Switches to the waiting version and reloads the page once it has taken over. */
+export function applyUpdate() {
+  if (!waitingWorker || !('serviceWorker' in navigator)) { location.reload(); return; }
+  navigator.serviceWorker.addEventListener('controllerchange', () => location.reload(), { once: true });
+  waitingWorker.postMessage('skip-waiting');
 }
