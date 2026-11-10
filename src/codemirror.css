@@ -1,0 +1,6 @@
+/* CodeMirror injects its own unlayered styles, so these overrides must be unlayered too (see index.css). */
+.codebox .cm-editor { height: 100%; font-size: 12.5px; background: var(--bg); }
+.codebox .cm-editor.cm-focused { outline: 0; }
+.codebox .cm-scroller { font-family: var(--mono); }
+.codebox .cm-gutters { background: var(--bg2); color: var(--muted); border-right: 1px solid var(--line); }
+.codebox .cm-content { caret-color: var(--fg); }

@@ -2,4 +2,9 @@ node_modules
 dist
 data
 *.log
-scripts/devart.ico
+.env
+.env.local
+.env.*.local
+.vercel
+supabase/.temp
+supabase/.branches
