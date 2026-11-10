@@ -40,7 +40,7 @@ export function Logo({ large }: { large?: boolean }) {
   const s = large ? 34 : 24;
   return (
     <span className="logo">
-      <svg width={s} height={s} viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--accent)" /><path d="M9 8h6a8 8 0 0 1 0 16H9z" fill="none" stroke="#fff" strokeWidth="3" /><circle cx="23" cy="9" r="3" fill="#ffc857" /></svg>
+      <svg width={s} height={s} viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="url(#dvbg)" /><defs><linearGradient id="dvbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#1e293b" /><stop offset="1" stopColor="#0b1120" /></linearGradient><linearGradient id="dvt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#5eead4" /><stop offset="1" stopColor="#0d9488" /></linearGradient><linearGradient id="dva" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#fde68a" /><stop offset="1" stopColor="#f59e0b" /></linearGradient><linearGradient id="dvw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#fff" /><stop offset="1" stopColor="#cbd5e1" /></linearGradient></defs><path d="M14 16h3.5M17.5 16V8.75H21M17.5 16v7.25H21" fill="none" stroke="#64748b" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" /><rect x="3.5" y="10.5" width="11" height="11" rx="3" fill="url(#dvt)" /><rect x="6.5" y="13.5" width="5" height="5" rx="1.5" fill="#0f172a" fillOpacity=".28" /><rect x="20.5" y="4.5" width="8" height="8.5" rx="2.5" fill="url(#dva)" /><rect x="20.5" y="19" width="8" height="8.5" rx="2.5" fill="url(#dvw)" /></svg>
       <b>DevArt</b>
     </span>
   );

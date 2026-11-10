@@ -365,3 +365,10 @@ button.avatar-btn:hover:not(:disabled), button.avatar-btn[aria-expanded='true'] 
 .confirm-foot { display: flex; justify-content: flex-end; gap: 8px; padding: 14px 20px 16px; }
 button.confirm-danger { background: var(--danger); border-color: var(--danger); color: #fff; font-weight: 600; }
 button.confirm-danger:hover:not(:disabled) { background: var(--danger); filter: brightness(1.1); }
+
+.notfound { display: flex; flex-direction: column; align-items: center; gap: 10px; max-width: 360px; }
+.notfound-code { font-size: 72px; font-weight: 800; line-height: 1; letter-spacing: -2px; margin-top: 12px; background: linear-gradient(135deg, #5eead4, #f59e0b); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.notfound h2 { margin: 0; }
+.notfound p { margin: 0; }
+.notfound-home { margin-top: 10px; padding: 9px 18px; border-radius: 10px; background: var(--accent); color: var(--accent-fg); font-weight: 600; text-decoration: none; }
+.notfound-home:hover { filter: brightness(1.08); }

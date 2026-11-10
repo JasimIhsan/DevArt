@@ -1,10 +1,11 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useSession } from './lib/auth.ts';
 import { supabaseConfigured } from './lib/supabase.ts';
 import { useToasts } from './lib/ui.ts';
 import { HomePage } from './pages/Home.tsx';
 import { EditorPage } from './pages/Editor.tsx';
 import { LoginPage } from './pages/Login.tsx';
+import { NotFoundPage } from './pages/NotFound.tsx';
 import { PwaStatus } from './pwa.tsx';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { ConfirmHost } from './components/ConfirmDialog.tsx';
@@ -34,9 +35,15 @@ export function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/f/:id" element={<EditorPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      ) : <LoginPage />}
+      ) : (
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/f/:id" element={<LoginPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      )}
       <PwaStatus />
       <Toasts />
       <ConfirmHost />
